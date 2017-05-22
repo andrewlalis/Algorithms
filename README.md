@@ -4,12 +4,12 @@ A handy collection of C algorithms compiled into one header file for use anywher
 ## Functionality
 
 ### Stack
-The stack is probably the most basic storage structure, using the 'first-in, first-out' approach.
-* ```c Stack createStack()```
-* ```c void freeStack(Stack *s)```
-* ```c void pushToStack(int item, Stack *s)```
-* ```c int popFromStack(Stack *s)```
-* ```c void printStack(Stack s)```
+The stack is probably the most basic storage structure, using the 'first-in, first-out' approach. The following functions are the only ones available for stack manipulation, as it is quite a minimalistic data structure.
+* ``` Stack createStack() ```
+* ``` void freeStack(Stack *s) ```
+* ``` void pushToStack(int item, Stack *s) ```
+* ``` int popFromStack(Stack *s) ```
+* ``` void printStack(Stack s) ```
 
 ### Queue
 
