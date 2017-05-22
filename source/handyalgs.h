@@ -24,6 +24,8 @@ Stack constants:
 */
 //	Size allocated to the stack on creation.
 #define STACK_SIZE_DEFAULT 8
+//  Type to be used for the stack.
+#define STACK_TYPE TEST
 
 /*
 Stack Structure:
@@ -35,7 +37,7 @@ Stack Structure:
 typedef struct {
 	int top;
 	int size;
-	int* items;
+	STACK_TYPE* items;
 } Stack;
 
 /*
@@ -43,8 +45,8 @@ Stack Functions:
 */
 Stack newStack();
 void freeStack(Stack *s);
-void pushToStack(int item, Stack *s);
-int popFromStack(Stack *s);
+void pushToStack(STACK_TYPE item, Stack *s);
+STACK_TYPE popFromStack(Stack *s);
 void printStack(Stack s);
 
 /*
@@ -55,7 +57,7 @@ Stack newStack(){
 	Stack s;
 	s.top = 0;
 	s.size = STACK_SIZE_DEFAULT;
-	s.items = malloc(s.size*sizeof(int));
+	s.items = malloc(s.size*sizeof(STACK_TYPE));
 	assert(s.items != NULL);
 	return s;
 }
@@ -72,14 +74,14 @@ void freeStack(Stack *s){
 Stack Push:
 	Pushes an item onto a stack. If there is no more room, more memory will be allocated to accommodate the extra item.
 */
-void pushToStack(int item, Stack *s){
+void pushToStack(STACK_TYPE item, Stack *s){
 	//It is safe to push to the stack.
 	if (s->top < s->size){
 		s->items[s->top] = item;
 	} else {
 		//There was not enough space, so we must double size.
 		s->size *= 2;
-		s->items = realloc(s->items, s->size*sizeof(int));
+		s->items = realloc(s->items, s->size*sizeof(STACK_TYPE));
 		assert(s->items != NULL);
 		s->items[s->top] = item;
 	}
@@ -88,23 +90,23 @@ void pushToStack(int item, Stack *s){
 
 /*
 Stack Pop:
-	Pops an item from the top of the stack, if it exists, or zero otherwise. Size will be checked to see if it is needed to reduce the size of the array.
+	Pops an item from the top of the stack, if it exists. Size will be checked to see if it is needed to reduce the size of the array.
 */
-int popFromStack(Stack *s){
-	int result;
+STACK_TYPE popFromStack(Stack *s){
+	STACK_TYPE result;
 	//Check if at least one item exists in the list.
 	if (s->top > 0){
 		s->top--;
 		result = s->items[s->top];
 	} else {
 		//The stack is empty.
-		result = 0;
-		fprintf(stderr, "STACK EMPTY");
+		fprintf(stderr, "Stack empty, exiting.");
+        exit(-1);
 	}
 	//Check if the items array size can be reduced.
 	if (s->top < (s->size / 2) && (s->size > STACK_SIZE_DEFAULT)){
 		s->size /= 2;
-		s->items = realloc(s->items, s->size*sizeof(int));
+		s->items = realloc(s->items, s->size*sizeof(STACK_TYPE));
 		assert(s->items != NULL);
 	}
 	return result;
@@ -112,13 +114,12 @@ int popFromStack(Stack *s){
 
 /*
 Stack Print:
-	Utility function to print the formatted contents of a stack.
+	Utility function to print a stack.
 */
 void printStack(Stack s){
-	printf("\tStack: \tItems: %d, Allocated Size: %d\n", s.top, s.size);
-	for (int i = s.top-1; i >= 0; i--){
-		printf("\t\tItem %d: %d\n", i+1, s.items[i]);
-	}
+	printf("\tStack: \tItems: %d, Allocated Size: %d, Bytes used: %lu\n", s.top, s.size, s.size*sizeof(STACK_TYPE));
 }
+
+
 
 #endif
