@@ -4,7 +4,12 @@ A handy collection of C algorithms compiled into one header file for use anywher
 ## Functionality
 
 ### Stack
-The stack is probably the most basic storage structure. It contains functions **push** to add to the top of the stack, and **pop** to remove from the top of the stack.
+The stack is probably the most basic storage structure, using the 'first-in, first-out' approach.
+* Stack createStack()
+* void freeStack(Stack *s)
+* void pushToStack(int item, Stack *s)
+* int popFromStack(Stack *s)
+* void printStack(Stack s)
 
 ### Queue
 
