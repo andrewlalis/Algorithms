@@ -26,11 +26,7 @@ int is_empty(Stack s);
 ```
 
 ### Description
-The stack is probably the most basic storage structure, using the 'first-in, 
-first-out' approach. To define a stack, the user must first know what type the stack 
-is, either a primitive type, or a **struct**. To define a stack, you must first define 
-the **STACK_TYPE** to *int*, *float*, *char*, or whatever type you wish. Then, include 
-the *handystack* header file.
+The stack is probably the most basic storage structure, using the 'first-in, first-out' approach. To define a stack, the user must first know what type the stack is, either a primitive type, or a **struct**. To define a stack, you must first define the **STACK_TYPE** to *int*, *float*, *char*, or whatever type you wish. Then, include the *handystack* header file.
 ```c
 #define STACK_TYPE int 
 #include "handystack.h" 
@@ -59,6 +55,46 @@ Where `FUNCTION` is the name of the function.
 [Back to Top](#table-of-contents)
 
 ## Linked List
+
+### Functions
+```c
+//Creates a new list.
+list* new(data, next);
+//Recursively frees a list.
+void free(List *l);
+//Returns the number of elements in a list.
+int size(List *l);
+//Returns a new list with an item added to the front.
+List* add(data, List *l);
+//Returns a new list with an item inserted at an index.
+List* insert(data, index, List *l);
+//Returns the item at an index.
+data get(index, List *l);
+//Returns a new list with an item at an index removed.
+List* remove(index, List *l);
+```
+
+### Description
+The linked list is a list where each *node* is comprised of a piece of data and a pointer to the next node. The list can have items added, inserted, and removed. To define a list, first define the type of data the list will contain, and then include the *handylist* header file.
+```c
+#define LIST_TYPE float
+#include "handylist.h"
+```
+To define multiple lists, you must first undefine **LIST_TYPE** like so.
+` #undef LIST_TYPE `
+Then you simply repeat the instructions above for whatever new list type you would like to make. Just be sure to not define two list types for the same type.
+
+### Example
+The following example creates a list of **char** and adds a few to the list, and prints the number added.
+```c
+#define LIST_TYPE char
+#include "handylist.h"
+char_list* myList = new_char_list('a', NULL);
+myList = add_char_list('b', myList);
+myList = add_char_list('c', myList);
+myList = insert_char_list('g', 1, myList);
+printf("List size: %d\n", size_char_list(myList));
+```
 
 [Back to Top](#table-of-contents)
 
