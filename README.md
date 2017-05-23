@@ -2,7 +2,10 @@
 A handy collection of C algorithms compiled into one header file for use anywhere. Feel free to include this file with any C project, as long as you keep the comment at the top with a little copyright notice.
 
 ##### Table of Contents
-[Stacks](#Stack)
+[Stacks](#stack)
+[Queues](#queue)
+[Linked Lists](#linked-list)
+[Heap(Priority Queue)](#heap-priority-queue)
 
 ## Stack
 
