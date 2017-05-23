@@ -11,11 +11,18 @@ A handy collection of C algorithms compiled into one header file for use anywher
 
 ### Functions
 ```c
+//Creates new stack.
 void new();
+//Frees stack memory.
 void free(Stack *s);
+//Pushes item to top of the stack.
 void push(item, Stack *s);
+//Removes item on top of the stack and returns it.
 item pop(Stack *s);
+//Prints stack size, memory usage.
 void print(Stack s);
+//Returns 1 if empty stack, 0 otherwise.
+int is_empty(Stack s);
 ```
 
 ### Description

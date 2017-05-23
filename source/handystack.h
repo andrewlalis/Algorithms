@@ -114,4 +114,12 @@ void TEMPLATE(print,STACK_CONTAINER)(STACK_CONTAINER s){
 	printf("\tStack: \tItems: %d, Allocated Size: %d, Bytes used: %lu\n", s.top, s.size, s.size*sizeof(STACK_TYPE));
 }
 
+/*
+Stack check Empty:
+	returns 1 if the stack is empty, false if there is at least one item.
+*/
+int TEMPLATE(is_empty,STACK_CONTAINER)(STACK_CONTAINER s){
+	return (s.top == 0);
+}
+
 #endif
