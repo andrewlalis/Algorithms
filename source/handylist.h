@@ -20,10 +20,13 @@ Linked List:
 	The linked list is a list of items of arbitrary value that are linked via a pointer to the next element, and the last element has a null pointer. The list does not try to maintain any particular order.
 */
 
+/*
+LIST_NODE: node for a list.
+*/
 #define LIST_NODE TEMPLATE(LIST_TYPE,list)
 
 /*
-List structure:
+List structures:
 	Each list node will contain a piece of data, which is of an arbitrary type, and a pointer to the next element.
 */
 
@@ -48,7 +51,7 @@ int TEMPLATE(size,LIST_NODE)(LIST_NODE* list){
 }
 
 /*
-New list:
+New list node:
 	allocates memory for a new list item, and returns it.
 */
 LIST_NODE* TEMPLATE(new,LIST_NODE)(LIST_TYPE data, LIST_NODE* next){
@@ -60,7 +63,7 @@ LIST_NODE* TEMPLATE(new,LIST_NODE)(LIST_TYPE data, LIST_NODE* next){
 }
 
 /*
-Free List:
+Free List node:
 	de-allocates memory for a list, and all next items recursively.
 */
 void TEMPLATE(free,LIST_NODE)(LIST_NODE* list){
@@ -68,26 +71,31 @@ void TEMPLATE(free,LIST_NODE)(LIST_NODE* list){
 		TEMPLATE(free,LIST_NODE)(list->next);
 	}
 	free(list);
-	list = NULL;
 }
 
 /*
 Add to the list:
-	Appends an item to the end of the list.
+	Appends an item to the front of the list.
 */
-void TEMPLATE(add,LIST_NODE)(LIST_TYPE data, LIST_NODE* list){
-	while (list->next != NULL){
-		list = list->next;
-	}
-	list->next = TEMPLATE(new,LIST_NODE)(data, NULL);
+LIST_NODE* TEMPLATE(add,LIST_NODE)(LIST_TYPE data, LIST_NODE* list){
+	LIST_NODE* newNode = TEMPLATE(new,LIST_NODE)(data,list);
+	return newNode;
 }
 
 /*
 Insert List;
 	Inserts an item at the given index, so that the item can be retreived with the get function at that index.
 */
-void TEMPLATE(insert,LIST_NODE)(LIST_TYPE data, int index, LIST_NODE* list){
-	
+LIST_NODE* TEMPLATE(insert,LIST_NODE)(LIST_TYPE data, int index, LIST_NODE* list){
+	if (index == 0){
+		return TEMPLATE(add,LIST_NODE)(data, list);
+	}
+	if (list == NULL){
+		printf("List is null.\n");
+		exit(-1);
+	}
+	list->next = TEMPLATE(insert,LIST_NODE)(data, index - 1, list->next);	
+	return list;
 }
 
 /*
@@ -106,6 +114,24 @@ LIST_TYPE TEMPLATE(get,LIST_NODE)(int index, LIST_NODE* list){
 		i++;
 	}
 	return list->data;
+}
+
+/*
+Remove from list:
+	Removes an item at an index from the list.
+*/
+LIST_NODE* TEMPLATE(remove,LIST_NODE)(int index, LIST_NODE* list){
+	if (list == NULL){
+		printf("List is null.\n");
+		exit(-1);
+	}
+	if (index == 0){
+		LIST_NODE* newList = list->next;
+		free(list);
+		return newList;
+	}
+	list->next = TEMPLATE(remove,LIST_NODE)(index-1, list->next);
+	return list;
 }
 
 #endif
