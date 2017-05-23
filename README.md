@@ -11,11 +11,11 @@ A handy collection of C algorithms compiled into one header file for use anywher
 
 ### Functions
 ```c
-void new()
-void free(Stack *s)
-void push(item, Stack *s)
-item pop(Stack *s)
-void print(Stack s)
+void new();
+void free(Stack *s);
+void push(item, Stack *s);
+item pop(Stack *s);
+void print(Stack s);
 ```
 
 ### Description
@@ -45,8 +45,16 @@ Notice that the function names are characteristic of the **STACK_TYPE** you've d
 ``` FUNCTION_ + STACK_TYPE + _stack ```
 Where `FUNCTION` is the name of the function.
 
+[Back to Top](#table-of-contents)
+
 ## Queue
+
+[Back to Top](#table-of-contents)
 
 ## Linked List
 
+[Back to Top](#table-of-contents)
+
 ## Heap (Priority Queue)
+
+[Back to Top](#table-of-contents)
