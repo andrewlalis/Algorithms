@@ -2,14 +2,11 @@
 A handy collection of C algorithms compiled into one header file for use anywhere. Feel free to include this file with any C project, as long as you keep the comment at the top with a little copyright notice.
 
 ##### Table of Contents
-[Stacks](#stack)
+[Stacks](#Stack)
 
-## Functionality
+## Stack
 
-<a name="stack"/>
-### Stack
-
-##### Functions
+### Functions
 ```c
 void new()
 void free(Stack *s)
@@ -18,7 +15,7 @@ item pop(Stack *s)
 void print(Stack s)
 ```
 
-##### Description
+### Description
 The stack is probably the most basic storage structure, using the 'first-in, 
 first-out' approach. To define a stack, the user must first know what type the stack 
 is, either a primitive type, or a **struct**. To define a stack, you must first define 
@@ -31,7 +28,8 @@ the *handystack* header file.
 To define more than one stack, **STACK_TYPE** must first be undefined.
 ` #undef STACK_TYPE `
 Then you simply define the type, and include the header again. Do not try to define two of the same type, however, as that will give all sorts of nasty errors.
-##### Example
+
+### Example
 The following example creates a stack of doubles, pushes 45.000 onto it, and prints the stack's characteristics.
 ```c
 #define STACK_TYPE double
@@ -43,8 +41,9 @@ print_double_stack(myStack);
 Notice that the function names are characteristic of the **STACK_TYPE** you've defined earlier? The functions have the following basic format:
 ``` FUNCTION_ + STACK_TYPE + _stack ```
 Where `FUNCTION` is the name of the function.
-### Queue
 
-### Linked List
+## Queue
 
-### Heap (Priority Queue)
+## Linked List
+
+## Heap (Priority Queue)
