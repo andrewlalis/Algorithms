@@ -21,6 +21,8 @@ int main(int argc, char* argv[]){
 	add_float_list(8.0, l);
 	printf("%d\n", size_float_list(l));
 	printf("%f\n", get_float_list(3, l));
+	insert_float_list(15.05, 2, l);
+	printf("%f\n", get_float_list(1, l));
 	free_float_list(l);
 	
 }

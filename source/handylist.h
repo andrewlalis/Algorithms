@@ -86,7 +86,9 @@ void TEMPLATE(add,LIST_NODE)(LIST_TYPE data, LIST_NODE* list){
 Insert List;
 	Inserts an item at the given index, so that the item can be retreived with the get function at that index.
 */
-
+void TEMPLATE(insert,LIST_NODE)(LIST_TYPE data, int index, LIST_NODE* list){
+	
+}
 
 /*
 Get list item:
