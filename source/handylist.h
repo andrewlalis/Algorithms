@@ -67,10 +67,11 @@ Free List node:
 	de-allocates memory for a list, and all next items recursively.
 */
 void TEMPLATE(free,LIST_NODE)(LIST_NODE* list){
-	if (list->next != NULL){
-		TEMPLATE(free,LIST_NODE)(list->next);
+	while (list->next != NULL){
+		LIST_NODE* next = list->next;
+		free(list);
+		list = next;
 	}
-	free(list);
 }
 
 /*

@@ -26,16 +26,12 @@ int main(int argc, char* argv[]){
 	push_double_stack(42.5, &s);
 	print_double_stack(s);
 	
-	float_list* l = new_float_list(5.0, NULL);
-	l = add_float_list(6.0, l);
-	l = add_float_list(7.0, l);
-	l = add_float_list(8.0, l);
-	printList(l);
-	l = insert_float_list(15.5525, 2, l);
-	l = insert_float_list(25, 0, l);
-	printList(l);
-	l = remove_float_list(2, l);
-	printList(l);
+	float_list* l = new_float_list(-1, NULL);
+	printf("Start.\n");
+	for (int i = 0; i < 100000000; i++){
+		l = add_float_list(i*i, l);
+	}
+	printf("End.\n");
 	free_float_list(l);
 	
 }
