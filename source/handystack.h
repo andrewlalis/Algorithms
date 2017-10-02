@@ -28,7 +28,7 @@ Stack constants:
 #define STACK_SIZE_DEFAULT 8
 #endif
 
-#define STACK_CONTAINER TEMPLATE(STACK_TYPE, stack)
+#define STACK_CONTAINER TEMPLATE(STACK_TYPE,stack)
 
 /*
 Stack Structure:
@@ -60,8 +60,8 @@ STACK_CONTAINER TEMPLATE(new,STACK_CONTAINER)(){
 Stack Deallocation:
 	Safely deallocates memory assigned to the stack's list.
 */
-void TEMPLATE(free,STACK_CONTAINER)(STACK_CONTAINER *s){
-	free(s->items);
+void TEMPLATE(free,STACK_CONTAINER)(STACK_CONTAINER s){
+	free(s.items);
 }
 
 /*
