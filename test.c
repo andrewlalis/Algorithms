@@ -11,6 +11,9 @@
 #define QUEUE_TYPE int
 #include "source/handyqueue.h"
 
+#define TREE_TYPE char
+#include "source/handytree.h"
+
 void printList(float_list* list){
 	int size = size_float_list(list);
 	for (int i = 0; i < size; i++){
@@ -43,5 +46,7 @@ int main(int argc, char* argv[]){
 	print_int_queue(q);
 	printf("First Item in queue: %d\n", dequeue_int_queue(&q));
 	free_int_queue(q);
+	
+	char_tree_node root = new_char_tree_node('a', 0);
 	
 }
