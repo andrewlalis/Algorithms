@@ -95,4 +95,16 @@ void TEMPLATE(addNode,TREE_NODE)(TREE_NODE* node, TREE_NODE newChild){
 	memcpy(node->children, oldChildren, node->)
 }
 
+/*
+Remove a node:
+	Removes a node from a given parent, referenced by a pointer.
+*/
+void TEMPLATE(remove,TREE_NODE)(TREE_NODE* parent, TREE_NODE* child){
+	for (int i = 0; i < parent->childCount; i++){
+		if (parent->children[i] == child){
+			
+		}
+	}
+}
+
 #endif
